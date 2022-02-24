@@ -52,6 +52,7 @@ class MainActivity : AppCompatActivity() {
             else -> AppCompatResources.getDrawable(this, R.drawable.formula_gral)
         }
 
+
         image.setImageDrawable(resource)
     }
 
