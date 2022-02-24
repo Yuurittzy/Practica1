@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Practica1_M4_Yuritzy</string>
+    <string name="name">Yuritzy</string>
+    <string name="version">v1.0</string>
+    <string name="spinner_op1">Formula General</string>
+    <string name="spinner_op2">Potencia</string>
+    <string name="spinner_op3">Área de un triángulo</string>
+</resources>
