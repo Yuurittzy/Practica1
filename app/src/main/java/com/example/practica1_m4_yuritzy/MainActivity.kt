@@ -44,7 +44,15 @@ class MainActivity : AppCompatActivity() {
         if (binding.etX.text.toString()=="")
         {
             Toast.makeText(this,"Por favor ingresa un número",Toast.LENGTH_SHORT).show()
-        } else{
+            binding.etX.error="Se requiere este campo"
+        } else if(binding.etY.text.toString()=="") {
+            Toast.makeText(this,"Por favor ingresa un número",Toast.LENGTH_SHORT).show()
+            binding.etY.error="Se requiere este campo"
+        } else if ( binding.etZ.visibility == View.VISIBLE && binding.etZ.text.toString()=="") {
+            Toast.makeText(this,"Por favor ingresa un número",Toast.LENGTH_SHORT).show()
+            binding.etZ.error="Se requiere este campo"
+        }
+        else{
             startActivity(Intent(this, ResultActivity::class.java))
         }
 
@@ -66,24 +74,24 @@ class MainActivity : AppCompatActivity() {
         val tvx= findViewById<TextView>(R.id.tvX)
         val tvy= findViewById<TextView>(R.id.tvY)
         val tvz= findViewById<TextView>(R.id.tvZ)
-        val et= findViewById<EditText>(R.id.etZ)
+        val etZ= findViewById<EditText>(R.id.etZ)
 
         if (position==1){
             tvz.visibility = View.INVISIBLE
-            et.visibility = View.INVISIBLE
-            tvx.text = "W"
-            tvy.text = "t"
+            etZ.visibility = View.INVISIBLE
+            tvx.text = "W:"
+            tvy.text = "t:"
         }else if(position==2){
             tvz.visibility = View.INVISIBLE
-            et.visibility = View.INVISIBLE
-            tvx.text = "b"
-            tvy.text = "h"
+            etZ.visibility = View.INVISIBLE
+            tvx.text = "b:"
+            tvy.text = "h:"
         }
         else{
             tvz.visibility = View.VISIBLE
-            tvx.text = "a"
-            tvy.text = "b"
-            tvz.text = "c"
+            tvx.text = "a:"
+            tvy.text = "b:"
+            tvz.text = "c:"
         }
 
     }

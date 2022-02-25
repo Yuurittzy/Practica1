@@ -85,8 +85,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="-90dp"
-        android:background="#00BCD4"
-        android:backgroundTint="#7E4949"
         android:onClick="goToResultActivity"
         android:text="@string/calcular"
         android:textSize="16sp"

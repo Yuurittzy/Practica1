@@ -11,4 +11,6 @@
     <string name="b">b :</string>
     <string name="c">c :</string>
     <string name="select_form">Selecciona una formula</string>
+    <string name="campo">Se requiere este campo</string>
+    <string name="ingresar_num">Por favor ingresa un número</string>
 </resources>
