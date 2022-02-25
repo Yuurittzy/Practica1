@@ -1,8 +1,14 @@
 <resources>
     <string name="app_name">Practica1_M4_Yuritzy</string>
-    <string name="name">Yuritzy</string>
+    <string name="name">Yuritzy Rodriguez</string>
     <string name="version">v1.0</string>
     <string name="spinner_op1">Formula General</string>
     <string name="spinner_op2">Potencia</string>
     <string name="spinner_op3">Área de un triángulo</string>
+    <string name="calcular">Calcular</string>
+    <string name="practica1">Práctica1</string>
+    <string name="a">a :</string>
+    <string name="b">b :</string>
+    <string name="c">c :</string>
+    <string name="select_form">Selecciona una formula</string>
 </resources>

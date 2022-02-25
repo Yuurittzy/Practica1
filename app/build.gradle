@@ -6,6 +6,10 @@ plugins {
 android {
     compileSdk 31
 
+    buildFeatures {
+        viewBinding true
+    }
+
     defaultConfig {
         applicationId "com.example.practica1_m4_yuritzy"
         minSdk 23
@@ -29,6 +33,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
 }
 
 dependencies {
