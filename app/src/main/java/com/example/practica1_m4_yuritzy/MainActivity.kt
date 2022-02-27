@@ -7,10 +7,13 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.content.res.AppCompatResources
 import com.example.practica1_m4_yuritzy.databinding.ActivityMainBinding
+import kotlin.math.sqrt
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityMainBinding
+
+    private var positionTmp =0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +34,8 @@ class MainActivity : AppCompatActivity() {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 showImage(position)
                 showText(position)
+                positionTmp=position
+
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -43,19 +48,18 @@ class MainActivity : AppCompatActivity() {
     fun goToResultActivity(view: View) {
         if (binding.etX.text.toString()=="")
         {
-            Toast.makeText(this,"Por favor ingresa un número",Toast.LENGTH_SHORT).show()
-            binding.etX.error="Se requiere este campo"
+            Toast.makeText(this,getString(R.string.ingresar_num),Toast.LENGTH_SHORT).show()
+            binding.etX.error=getString(R.string.campo)
         } else if(binding.etY.text.toString()=="") {
-            Toast.makeText(this,"Por favor ingresa un número",Toast.LENGTH_SHORT).show()
-            binding.etY.error="Se requiere este campo"
+            Toast.makeText(this,getString(R.string.ingresar_num),Toast.LENGTH_SHORT).show()
+            binding.etY.error=getString(R.string.campo)
         } else if ( binding.etZ.visibility == View.VISIBLE && binding.etZ.text.toString()=="") {
-            Toast.makeText(this,"Por favor ingresa un número",Toast.LENGTH_SHORT).show()
-            binding.etZ.error="Se requiere este campo"
+            Toast.makeText(this,getString(R.string.ingresar_num),Toast.LENGTH_SHORT).show()
+            binding.etZ.error=getString(R.string.campo)
         }
         else{
-            startActivity(Intent(this, ResultActivity::class.java))
+            showResult(positionTmp)
         }
-
     }
 
     fun showImage(position: Int) {
@@ -76,23 +80,66 @@ class MainActivity : AppCompatActivity() {
         val tvz= findViewById<TextView>(R.id.tvZ)
         val etZ= findViewById<EditText>(R.id.etZ)
 
-        if (position==1){
-            tvz.visibility = View.INVISIBLE
-            etZ.visibility = View.INVISIBLE
-            tvx.text = "W:"
-            tvy.text = "t:"
-        }else if(position==2){
-            tvz.visibility = View.INVISIBLE
-            etZ.visibility = View.INVISIBLE
-            tvx.text = "b:"
-            tvy.text = "h:"
-        }
-        else{
-            tvz.visibility = View.VISIBLE
-            tvx.text = "a:"
-            tvy.text = "b:"
-            tvz.text = "c:"
+        when (position) {
+            1 -> {
+                tvz.visibility = View.INVISIBLE
+                etZ.visibility = View.INVISIBLE
+                tvx.text = getString(R.string.w)
+                tvy.text = getString(R.string.t)
+            }
+            2 -> {
+                tvz.visibility = View.INVISIBLE
+                etZ.visibility = View.INVISIBLE
+                tvx.text = getString(R.string.b2)
+                tvy.text = getString(R.string.h)
+            }
+            else -> {
+                tvz.visibility = View.VISIBLE
+                tvx.text = getString(R.string.a)
+                tvy.text = getString(R.string.b)
+                tvz.text = getString(R.string.c)
+            }
         }
 
     }
+
+    private fun calculateGeneralFormula(): String{
+            val a = binding.etX.text.toString().toDouble()
+            val b = binding.etY.text.toString().toDouble()
+            val c = binding.etZ.text.toString().toDouble()
+
+            val resultPositive = ((-1 * b) + sqrt(((b*b) -(4 * a * c)))) / (2*a)
+            val resultNegative = ((-1 * b) - sqrt(((b*b) -(4 * a * c)))) / (2*a)
+
+        return ("x1= $resultPositive\nx2 = $resultNegative")
+    }
+
+    private fun calculatePotency(): String{
+        val w = binding.etX.text.toString().toDouble()
+        val t = binding.etY.text.toString().toDouble()
+
+        return ("P= " + (w/t).toString())
+    }
+
+    private fun calculateAreaTriangle(): String{
+        val b = binding.etX.text.toString().toDouble()
+        val h = binding.etY.text.toString().toDouble()
+
+        return ("A= " + ((b*h)/2).toString())
+    }
+
+    private fun showResult(position: Int) {
+        val intent = Intent(this, ResultActivity::class.java)
+        val bundle = Bundle()
+        val result  = when (position) {
+            0 -> calculateGeneralFormula()
+            1 -> calculatePotency()
+            2  -> calculateAreaTriangle()
+            else -> ""
+        }
+        bundle.putString("RESULT", result)
+        intent.putExtras(bundle)
+        startActivity(intent)
+    }
+
 }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Practica1_M4_Yuritzy</string>
+    <string name="name">Yuritzy Rodriguez</string>
+    <string name="version">v1.0</string>
+    <string name="spinner_op1">Quadratic formula</string>
+    <string name="spinner_op2">Power</string>
+    <string name="spinner_op3">Area of a triangle</string>
+    <string name="calcular">Calculate</string>
+    <string name="practica1">Practice 1</string>
+    <string name="a">a :</string>
+    <string name="b">b :</string>
+    <string name="c">c :</string>
+    <string name="w">W :</string>
+    <string name="t">t :</string>
+    <string name="b2">b :</string>
+    <string name="h">h :</string>
+    <string name="select_form">Select a formula</string>
+    <string name="campo">This field is required</string>
+    <string name="ingresar_num">Please enter a number</string>
+    <string name="result">The result is:</string>
+</resources>
